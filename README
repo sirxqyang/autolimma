@@ -1,1 +1,81 @@
-hello world!
+=======================
+README for limma (1.1)
+=======================
+
+<12-09-2012  Xiaoqin Yang>
+Gitlink: https://github.com/sirxqyang/limma
+
+Introduction
+============
+
+These R scripts were developed to facilitate to 
+Microarray analysis. A lot of R packages and code
+could be found to perform microarray analysis. 
+But every time I have rewrite the script to adapt 
+different task. To address the lack of stable R 
+scipts, I present this suit, for identifiying 
+differentially expressed genes. This suit could 
+accomplish mission automatically. All I should do 
+is to design the comparison, make the txt file and
+name it with the GSE id.
+
+Key words: MAS5.0, limma, microarray. 
+
+
+Install & Preperation
+~~~~~~~~~~~~~~~~~~~~~~
+
+Just download the suit and make sure that R was 
+avaliable in your OS. Meanwhile, make sure you 
+install all the following packages:
+
+GEOquery
+limma
+affy
+hgu133plus2cdf
+hgu133plus2hsentrezgcdf
+org.Hs.eg.db
+hgu133plus2.db
+
+To install a particular package, type the 
+following in an R command window:
+
+source("http://bioconductor.org/biocLite.R")
+biocLite(your package)
+
+But there is one exception:
+The latest version of hgu133plus2hsentrezgcdf was downloaded from brainarray. See the url below:
+http://brainarray.mbni.med.umich.edu/Brainarray/Database/CustomCDF/CDF_download.asp
+
+
+
+Usage of this suit
+~~~~~~~~~~~~~~~~~~~
+
+Just type the following command in the terminal:
+Rscript pipeline.R GSE10437.txt
+
+pipeline.R is the main script of this suit.
+GSE10437.txt is the name of the target file in our analysis.
+The content of this file should be:
+
+Name	FileName	Condition
+M0h	GSM263933.CEL	0h
+T0h	GSM263934.CEL	0h
+M18h	GSM263935.CEL	18h
+T18h	GSM263936.CEL	18h
+
+
+Content of the result
+~~~~~~~~~~~~~~~~~~~~~~
+
+All these results found in the folder GSE10437 contains:
+
+1) microarray list in txt format
+2) raw cel files
+3) QC reports in pdf
+4) mas5 matrix
+5) differentially expressed gene list
+6) heatmap of differential gene
+7) gene set enrichment analysis (kegg & go)
+8) chromosome distribution
